@@ -15,7 +15,7 @@ const Navbar = () => {
           <a href="/">
             <img
               className="w-full h-auto"
-              src="/assets/images/logo/tickets.svg"
+              src="src\assets\icons\tickets.svg"
               alt="logo-tickitz"
             />
           </a>
@@ -55,13 +55,13 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-end gap-3">
           <a
             href="/auth/signin"
-            className="px-[18px] py-3 rounded border border-blue-primary text-blue-primary text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
+            className="px-[18px] py-3 rounded border  border-blue-700 text-blue-primary text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
           >
             Sign in
           </a>
           <a
             href="/auth/signup"
-            className="px-[18px] py-3 rounded bg-blue-primary border border-blue-primary text-white text-sm font-normal tracking-wider hover:bg-blue-700 transition-colors"
+            className="px-[18px] py-3 rounded bg-blue-600 border border-blue-700 text-white text-sm font-normal tracking-wider hover:bg-blue-700 transition-colors"
           >
             Sign Up
           </a>
@@ -69,18 +69,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu - Mobile */}
         <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z"
-              fill="black"
-            />
-          </svg>
+          <img src="src\assets\icons\gg_menu-right-alt.svg" alt="hamburger" />
         </div>
       </nav>
 
@@ -94,7 +83,7 @@ const Navbar = () => {
           <div className="max-w-[130px]">
             <a href="/">
               <img
-                src="/assets/images/logo/tickets.svg"
+                src="src\assets\icons\Tickitz2.svg"
                 alt="logo-tickitz-purple"
                 className="w-full h-auto"
               />
