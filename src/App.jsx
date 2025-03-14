@@ -12,8 +12,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route path="/home" element={<Navigate to="/" />} />
+          <Route element={<SharedLayout />}>
+            <Route path="/home" element={<Navigate to="/" replace />} />
             {/* <Route path="home">
               <Route index element={<Home />} />
             </Route> */}
@@ -23,19 +23,17 @@ function App() {
               <Route path="detail/:movieId" element={<MovieDetail />} />
             </Route>
           </Route>
-        </Routes>
-        <Routes>
           <Route path="/auth" element={<AuthLayout />}>
-            <Route index element={<Navigate to="/auth/signin" />} />
+            <Route index element={<Navigate to="/auth/signin" replace />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />
           </Route>
+          /* <Route path="*" element={<p>Path not resolved</p>} /> */
         </Routes>
       </BrowserRouter>
     </>
   );
 }
 {
-  /* <Route path="*" element={<p>Path not resolved</p>} /> */
 }
 export default App;
