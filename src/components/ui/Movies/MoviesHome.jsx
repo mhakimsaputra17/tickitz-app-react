@@ -1,16 +1,36 @@
 import React from "react";
 import MovieCard from "../../common/MovieCard";
 import useFetch from "../../../hooks/useFetch";
+import useFetchCustom from "../../../hooks/useFetchCustom";
+import { BASE_IMAGE_URL, API_URL_POPULAR } from "../../../configs/config";
 function MoviesHome() {
-  const { movie, loading, error } = useFetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=6"
-  );
-  //   console.log(data);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!movie) return <p>No data available.</p>;
+  // const { movie, loading, error } = useFetch(
+  //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=6"
+  // );
 
-  const slicedmovies = Array.isArray(movie) ? movie.slice(0, 4) : [];
+  const { data: moviesData, loading, error } = useFetchCustom(API_URL_POPULAR);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  // console.log(MoviesData);
+  // for (const movieData of moviesData) {
+  //   const { id, title, poster_path } = movieData;
+  //   return {
+  //     id,
+  //     title,
+  //     imageUrl: `${BASE_IMAGE_URL}${poster_path}`,
+  //   };
+  // }
+
+  // console.log(moviesData);
+  // const [{ id, title, poster_path }] = moviesData;
+
+  // const { title } = moviesData;
+  //   console.log(data);
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error.message}</p>;
+  // if (!movie) return <p>No data available.</p>;
+
+  const slicedmovies = Array.isArray(moviesData) ? moviesData.slice(0, 4) : [];
   return (
     <>
       <section className="movie-section-container relative">
@@ -25,11 +45,11 @@ function MoviesHome() {
           </h2>
         </div>
         <div className="movie-grid px-[5%] py-[18px] flex gap-[20px] justify-start flex-nowrap overflow-x-auto pb-[20px] [scroll-snap-type:x_mandatory]">
-          {slicedmovies.map((movie) => (
+          {slicedmovies.map(({ id, title, poster_path }) => (
             <MovieCard
-              key={movie.id}
-              imageUrl={movie.imageUrl}
-              title={movie.title}
+              key={id}
+              imageUrl={`${BASE_IMAGE_URL}${poster_path}`}
+              title={title}
             />
           ))}
         </div>
