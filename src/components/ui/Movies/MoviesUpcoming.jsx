@@ -1,16 +1,18 @@
 import React from "react";
 import MovieCard from "../../common/MovieCard";
-import useFetch from "../../../hooks/useFetch";
+// import useFetch from "../../../hooks/useFetch";
+import useFetchCustom from "../../../hooks/useFetchCustom";
+import {
+  BASE_IMAGE_URL,
+  API_URL_POPULAR,
+  API_URL_UPCOMING,
+} from "../../../configs/config";
 function MoviesUpcoming() {
-  const { movie, loading, error } = useFetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=4"
-  );
-  //   console.log(data);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!movie) return <p>No data available.</p>;
+  const { data: moviesData, loading, error } = useFetchCustom(API_URL_UPCOMING);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
-  const slicedmovies = Array.isArray(movie) ? movie.slice(0, 4) : [];
+  const slicedmovies = Array.isArray(moviesData) ? moviesData.slice(0, 4) : [];
   return (
     <>
       <section className="movie-section-container relative">
@@ -23,11 +25,11 @@ function MoviesUpcoming() {
           </h2>
         </div>
         <div className="movie-grid px-[5%] py-[18px] flex gap-[20px] justify-start flex-nowrap overflow-x-auto pb-[20px] [scroll-snap-type:x_mandatory]">
-          {slicedmovies.map((movie) => (
+          {slicedmovies.map(({ id, title, poster_path }) => (
             <MovieCard
-              key={movie.id}
-              imageUrl={movie.imageUrl}
-              title={movie.title}
+              key={id}
+              imageUrl={`${BASE_IMAGE_URL}${poster_path}`}
+              title={title}
             />
           ))}
         </div>
