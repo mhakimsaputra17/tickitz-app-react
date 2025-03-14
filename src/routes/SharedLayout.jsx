@@ -7,7 +7,7 @@ function SharedLayout() {
     <>
       <Navbar />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
