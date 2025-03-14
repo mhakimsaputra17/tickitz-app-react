@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { BASE_IMAGE_URL, API_KEY } from "../configs/config";
+import { BASE_IMAGE_URL, TMDB_API_KEY } from "../configs/config";
 
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${API_KEY}`,
+    Authorization: `Bearer ${TMDB_API_KEY}`,
   },
 };
 
