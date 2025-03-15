@@ -1,11 +1,31 @@
 import React from "react";
 import MovieTags from "./MovieTags";
 import ButtonMovie from "./ButtonMovie";
+import useFetchCustom from "../../hooks/useFetchCustom";
+import useFetchGenre from "../../hooks/useFetchGenre";
+// import { API_URL_MOVIE_DETAILS } from "../../configs/config";
 
 function MovieCard({ id, imageUrl, title, onButtonClick }) {
+  // const { data: moviesData, loading, error } = useFetchCustom(API_URL_POPULAR);
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error}</div>;
+
+  // const slicedmovies = Array.isArray(moviesData) ? moviesData.slice(0, 4) : [];
+  // console.log(slicedmovies);
+  const {
+    data: movieDetail,
+    loading,
+    error,
+  } = useFetchGenre(`https://api.themoviedb.org/3/movie/${id}`);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  // console.log(movieDetail);
+  // console.log(movieDetail.genres);
+  const genres = movieDetail.genres.map((genre) => genre.name);
+
   return (
     <>
-      <div className="movie-card mb-[30px] transition-all duration-300 active:-translate-y-2 hover:-translate-y-2 [scroll-snap-align:start]">
+      <div className="movie-card mb-[30px] transition-all duration-300 active:-translate-y-2 hover:-translate-y-2 [scroll-snap-align:start] ">
         <div className="poster relative overflow-hidden rounded-[8px] [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.1)]">
           <img
             src={imageUrl}
@@ -17,7 +37,16 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
         <h3 className="mt-[19px] text-[20px] font-bold leading-[1.4] tracking-[1px]">
           {title}
         </h3>
-        <MovieTags />
+        <div className="tags flex gap-[10px] mt-[14px] flex-wrap">
+          {genres.map((genre) => (
+            <span
+              key={genre}
+              className="tag text-[#a0a3bd] bg-[rgba(160,_163,_189,_0.1)] rounded-[20px] text-[11px] text-center font-normal leading-[normal] px-[15px] py-[5px]"
+            >
+              {genre}
+            </span>
+          ))}
+        </div>
       </div>
     </>
   );

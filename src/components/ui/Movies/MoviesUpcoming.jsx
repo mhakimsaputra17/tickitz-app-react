@@ -30,6 +30,7 @@ function MoviesUpcoming() {
               key={id}
               imageUrl={`${BASE_IMAGE_URL}${poster_path}`}
               title={title}
+              id={id}
             />
           ))}
         </div>
