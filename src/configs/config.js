@@ -5,10 +5,11 @@ export const API_URL_POPULAR =
 export const API_URL_TOP_RATED =
   "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=6";
 export const API_URL_UPCOMING =
-  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=2";
+  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 export const API_URL_NOW_PLAYING =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=6";
 export const API_URL_GENRE =
   "https://api.themoviedb.org/3/genre/movie/list?language=en-US";
 export const API_URL_SEARCH =
   "https://api.themoviedb.org/3/search/movie?language=en-US&query=";
+// export const API_URL_MOVIE_DETAILS = `https://api.themoviedb.org/3/movie/${id}`;
