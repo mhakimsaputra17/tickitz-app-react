@@ -3,6 +3,7 @@ import HeroDetail from "../../components/ui/Hero/HeroDetail";
 import useFetchGenre from "../../hooks/useFetchGenre";
 import { useParams } from "react-router";
 import { BASE_IMAGE_URL } from "../../configs/config";
+import BookTicket from "../../components/ui/BookTicket/BookTicket";
 
 function MovieDetail() {
   let { movieId } = useParams();
@@ -41,6 +42,8 @@ function MovieDetail() {
         runtime={`${hours}h ${minutes}m`}
         production_companies={moviesData.production_companies}
       />
+
+      <BookTicket />
     </>
   );
 }
