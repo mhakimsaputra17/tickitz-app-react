@@ -13,3 +13,4 @@ export const API_URL_GENRE =
 export const API_URL_SEARCH =
   "https://api.themoviedb.org/3/search/movie?language=en-US&query=";
 // export const API_URL_MOVIE_DETAILS = `https://api.themoviedb.org/3/movie/${id}`;
+export const API_URL_MOVIE_DISCOVER = `https://api.themoviedb.org/3/discover/movie`;
