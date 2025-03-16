@@ -2,16 +2,19 @@ import React from "react";
 import MovieCard from "../../common/MovieCard";
 import useFetch from "../../../hooks/useFetch";
 import useFetchCustom from "../../../hooks/useFetchCustom";
-import { BASE_IMAGE_URL, API_URL_POPULAR } from "../../../configs/config";
+import {
+  BASE_IMAGE_URL,
+  API_URL_POPULAR,
+  API_URL_TOP_RATED,
+} from "../../../configs/config";
 function MoviesHome() {
-  // const { movie, loading, error } = useFetch(
-  //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=6"
-  // );
-
-  const { data: moviesData, loading, error } = useFetchCustom(API_URL_POPULAR);
+  const {
+    data: moviesData,
+    loading,
+    error,
+  } = useFetchCustom(API_URL_TOP_RATED);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  // console.log(moviesData);
 
   const slicedmovies = Array.isArray(moviesData) ? moviesData.slice(0, 4) : [];
   return (
