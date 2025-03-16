@@ -2,6 +2,7 @@ import React from "react";
 import MovieCard from "./MovieCard";
 import useFetchCustom from "../../hooks/useFetchCustom";
 import useFetchGenre from "../../hooks/useFetchGenre";
+import ButtonMovie from "./ButtonMovie";
 
 function MovieCardGrid({
   apiUrl,
@@ -36,20 +37,7 @@ function MovieCardGrid({
             alt={title}
             className="w-full h-auto aspect-[2/3] object-cover rounded-lg transition-transform ease-in-out duration-500 hover:scale-105"
           />
-          <div className="actions absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center gap-2 bg-black/70 opacity-0 transition-opacity ease-in-out duration-300 hover:opacity-100">
-            <a
-              href="/pages/order/order-page.html"
-              className="button-outline border border-white bg-transparent text-white font-normal text-sm tracking-wider rounded-md hover:bg-white/10"
-            >
-              Details
-            </a>
-            <a
-              href="/pages/order/order-page.html"
-              className="button-primary bg-blue-primary text-neutral-gray-50 font-normal text-sm tracking-wider border border-blue-primary rounded-md hover:bg-[#1642b8]"
-            >
-              Buy Ticket
-            </a>
-          </div>
+          <ButtonMovie id={id} />
         </div>
         <h3 className="mt-5 text-lg font-bold leading-5 tracking-wider">
           {title}
