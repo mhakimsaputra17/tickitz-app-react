@@ -6,26 +6,20 @@ import useFetchGenre from "../../hooks/useFetchGenre";
 // import { API_URL_MOVIE_DETAILS } from "../../configs/config";
 
 function MovieCard({ id, imageUrl, title, onButtonClick }) {
-  // const { data: moviesData, loading, error } = useFetchCustom(API_URL_POPULAR);
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error}</div>;
-
-  // const slicedmovies = Array.isArray(moviesData) ? moviesData.slice(0, 4) : [];
-  // console.log(slicedmovies);
   const {
     data: movieDetail,
     loading,
     error,
   } = useFetchGenre(`https://api.themoviedb.org/3/movie/${id}`);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  // console.log(movieDetail);
-  // console.log(movieDetail.genres);
+  if (loading) return <div className="text-center py-8">Loadi ng...</div>;
+  if (error)
+    return <div className="text-center py-8 text-red-500">Error: {error}</div>;
+
   const genres = movieDetail.genres.map((genre) => genre.name);
 
   return (
     <>
-      <div className="movie-card mb-[30px] transition-all duration-300 active:-translate-y-2 hover:-translate-y-2 [scroll-snap-align:start] ">
+      <div className=" movie-card mb-[30px] transition-all duration-300 active:-translate-y-2 hover:-translate-y-2 [scroll-snap-align:start] ">
         <div className="poster relative overflow-hidden rounded-[8px] [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.1)]">
           <img
             src={imageUrl}
