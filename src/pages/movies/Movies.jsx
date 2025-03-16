@@ -7,6 +7,7 @@ import {
   BASE_IMAGE_URL,
   API_URL_POPULAR,
   API_URL_MOVIE_DISCOVER,
+  API_URL_TOP_RATED,
 } from "../../configs/config";
 import MovieCardGrid from "../../components/common/MovieCardGrid";
 import useFetch from "../../hooks/useFetchCustom";
@@ -14,7 +15,12 @@ import FeatSection from "../../components/ui/Features/FeatSection";
 import Newsletter from "../../components/ui/Newsletter/Newsletter";
 
 function Movies() {
-  const { data: moviesData, loading, error } = useFetch(API_URL_MOVIE_DISCOVER);
+  const page = 1;
+  const {
+    data: moviesData,
+    loading,
+    error,
+  } = useFetch(`${API_URL_TOP_RATED}?page=${page}`);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
