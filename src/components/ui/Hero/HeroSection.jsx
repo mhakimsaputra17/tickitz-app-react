@@ -20,24 +20,24 @@ function HeroSection() {
             <div className="image-row flex-[50%] px-[4px] sm:px-[6px] md:px-[8px] py-[0]">
               <img
                 className="rounded-[8px] block transition-all duration-300 active:scale-105 hover:scale-105 mt-[12px] md:mt-[16px] w-full h-auto "
-                src="src\assets\images\johnwick.svg"
+                src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/poster/johnwick.svg"
                 alt="johnwick movie"
               />
               <img
                 className="rounded-[8px] block transition-all duration-300 active:scale-105 hover:scale-105 mt-[12px] md:mt-[16px] w-full h-auto"
-                src="src\assets\images\spiderman.svg"
+                src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/poster/spiderman.svg"
                 alt="spiderman movie"
               />
             </div>
             <div className="image-row flex-[50%] px-[4px] sm:px-[6px] md:px-[8px] py-[0]">
               <img
                 className="rounded-[8px] block transition-all duration-300 active:scale-105 hover:scale-105 mt-[12px] md:mt-[16px] w-full h-auto"
-                src="src\assets\images\lionking.svg"
+                src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/poster/lionking.svg"
                 alt="lionking movie"
               />
               <img
                 className="rounded-[8px] block transition-all duration-300 active:scale-105 hover:scale-105 mt-[12px] md:mt-[16px] w-full h-auto"
-                src="src\assets\images\roblox.svg"
+                src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/poster/roblox.svg"
                 alt="roblox movie"
               />
             </div>
