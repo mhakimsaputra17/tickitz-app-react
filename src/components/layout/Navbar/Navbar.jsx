@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-end gap-3">
           <Link
             to="/auth/signin"
-            className="px-[18px] py-3 rounded border  border-blue-700 text-blue-primary text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
+            className="px-[18px] py-3 rounded border  border-blue-700 text-blue-600 text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
           >
             Sign in
           </Link>
@@ -69,7 +69,10 @@ const Navbar = () => {
 
         {/* Hamburger Menu - Mobile */}
         <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
-          <img src="src\assets\icons\gg_menu-right-alt.svg" alt="hamburger" />
+          <img
+            src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/icons/gg_menu-right-alt.svg"
+            alt="hamburger"
+          />
         </div>
       </nav>
 
@@ -81,13 +84,13 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center mb-8">
           <div className="max-w-[130px]">
-            <a href="/">
+            <Link href="/">
               <img
-                src="src\assets\icons\Tickitz2.svg"
+                src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/tickets.svg"
                 alt="logo-tickitz-purple"
                 className="w-full h-auto"
               />
-            </a>
+            </Link>
           </div>
           <button
             className="text-2xl bg-transparent border-none cursor-pointer"
@@ -98,44 +101,44 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-col gap-5">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="text-lg text-[#0f172a] py-2.5 border-b border-gray-100"
             onClick={toggleMobileMenu}
           >
             Home
-          </a>
-          <a
-            href="/movies"
+          </Link>
+          <Link
+            to="/movies"
             className="text-lg text-[#0f172a] py-2.5 border-b border-gray-100"
             onClick={toggleMobileMenu}
           >
             Movie
-          </a>
-          <a
-            href="/order"
+          </Link>
+          <Link
+            to="/movies"
             className="text-lg text-[#0f172a] py-2.5 border-b border-gray-100"
             onClick={toggleMobileMenu}
           >
             Buy Ticket
-          </a>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-4 mt-8">
-          <a
-            href="/auth/signin"
-            className="px-[18px] py-3 rounded border border-blue-primary text-blue-primary text-sm font-normal tracking-wider text-center"
+          <Link
+            to="/auth/signin"
+            className="px-[18px] py-3 rounded border border-blue-600 text-blue-600 text-sm font-normal tracking-wider text-center"
             onClick={toggleMobileMenu}
           >
             Sign in
-          </a>
-          <a
-            href="/auth/signup"
-            className="px-[18px] py-3 rounded bg-blue-primary border border-blue-primary text-white text-sm font-normal tracking-wider text-center"
+          </Link>
+          <Link
+            to="/auth/signup"
+            className="px-[18px] py-3 rounded bg-blue-primary border border-blue-primary text-white text-sm font-normal tracking-wider text-center bg-blue-600"
             onClick={toggleMobileMenu}
           >
             Sign Up
-          </a>
+          </Link>
         </div>
       </div>
     </header>
