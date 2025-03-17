@@ -14,10 +14,8 @@ function App() {
         <Routes>
           <Route element={<SharedLayout />}>
             <Route path="/home" element={<Navigate to="/" replace />} />
-            {/* <Route path="home">
-              <Route index element={<Home />} />
-            </Route> */}
             <Route index element={<Home />} />
+
             <Route path="movies">
               <Route index element={<Movies />} />
               <Route path="detail/:movieId" element={<MovieDetail />} />
@@ -28,7 +26,17 @@ function App() {
             <Route path="signin" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />
           </Route>
-          /* <Route path="*" element={<p>Path not resolved</p>} /> */
+          /*{" "}
+          <Route
+            path="*"
+            element={
+              <h1 className="text-blue-500 text-5xl text-center font-bold flex justify-center items-center h-screen">
+                <br />
+                404 Page Not Found
+              </h1>
+            }
+          />{" "}
+          */
         </Routes>
       </BrowserRouter>
     </>
