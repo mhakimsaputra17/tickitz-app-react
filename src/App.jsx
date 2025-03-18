@@ -7,6 +7,7 @@ import MovieDetail from "./pages/movies/MovieDetail";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import AuthLayout from "./routes/AuthLayout";
+import Order from "./pages/order/Order";
 function App() {
   return (
     <>
@@ -19,6 +20,10 @@ function App() {
             <Route path="movies">
               <Route index element={<Movies />} />
               <Route path="detail/:movieId" element={<MovieDetail />} />
+            </Route>
+
+            <Route path="order">
+              <Route index element={<Order />} />
             </Route>
           </Route>
           <Route path="/auth" element={<AuthLayout />}>

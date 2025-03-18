@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router";
 import { useState } from "react";
 import { useFormValidation } from "../../../hooks/useFormValidation";
-import { findUser } from "../../../utils/authUtils";
+import { saveUser } from "../../../utils/authUtils";
 
-function Login() {
+function Register() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
-  const [loginError, setLoginError] = useState("");
-  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const { errors, validateEmail, validatePassword, validateForm } =
     useFormValidation();
 
@@ -21,8 +21,6 @@ function Login() {
       ...prev,
       [id]: value,
     }));
-    // Clear login error when user starts typing again
-    setLoginError("");
   };
 
   const handleEmailBlur = () => {
@@ -33,26 +31,22 @@ function Login() {
     validatePassword(formData.password);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm(formData)) {
-      const user = findUser(formData.email, formData.password);
-      if (user) {
-        // Successful login
-        setLoginSuccess(true);
-        setLoginError("");
-        // You could redirect or set authentication state here
-        setTimeout(() => {
-          setLoginSuccess(false);
-        }, 3000);
-      } else {
-        setLoginError("Invalid email or password");
-      }
+      // Save user to localStorage
+      saveUser(formData);
+      setShowSuccess(true);
+      setFormData({ email: "", password: "" });
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -77,28 +71,21 @@ function Login() {
         </div>
 
         {/* Success message */}
-        {loginSuccess && (
+        {showSuccess && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-5 right-5">
-            Login successful!
+            Registration successful!
           </div>
         )}
 
-        {/* Login card */}
+        {/* Register card */}
         <div className="bg-white rounded-2xl w-full max-w-[480px] p-6 sm:p-10 lg:p-[60px] shadow-lg">
           <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 text-left">
-            Welcome Back<span className="ml-1 text-lg sm:text-xl">👋</span>
+            REGISTER<span className="ml-1 text-lg sm:text-xl">👋</span>
           </h2>
 
           <p className="text-[#8a8a9a] text-xs sm:text-sm lg:text-base mb-5 lg:mb-7 text-left">
-            Sign in with your data that you entered during your registration
+            Create your account to enjoy all features
           </p>
-
-          {/* Login error message */}
-          {loginError && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {loginError}
-            </div>
-          )}
 
           <form className="login-form" noValidate onSubmit={handleSubmit}>
             {/* Email field */}
@@ -110,9 +97,9 @@ function Login() {
                 Email
               </label>
               <input
+                value={formData.email}
                 type="text"
                 id="email"
-                value={formData.email}
                 placeholder="Enter your email"
                 className={`w-full py-3 px-4 border ${
                   errors.email ? "border-red-500" : ""
@@ -174,20 +161,21 @@ function Login() {
               </Link>
             </div>
 
-            {/* Login button */}
+            {/* Register button */}
             <button
+              value="Submit"
               type="submit"
               className="w-full py-3 bg-[#4169e1] text-white border-none rounded-md text-sm sm:text-base lg:text-lg font-medium cursor-pointer hover:bg-[#3657c0] transition-colors"
             >
-              Login
+              Register
             </button>
 
-            {/* Don't have account */}
+            {/* Already have account */}
             <div className="text-center mt-4">
               <p className="text-[#8a8a9a] text-xs sm:text-sm">
-                Don't have an account?{" "}
-                <Link to="/register" className="text-[#4169e1] no-underline">
-                  Register
+                Already have an account?{" "}
+                <Link to="/login" className="text-[#4169e1] no-underline">
+                  Login
                 </Link>
               </p>
             </div>
@@ -233,4 +221,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

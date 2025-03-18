@@ -1,7 +1,12 @@
 import React from "react";
+import Register from "../../components/ui/Login/Register";
 
 function SignUp() {
-  return <div>SignUp</div>;
+  return (
+    <>
+      <Register />
+    </>
+  );
 }
 
 export default SignUp;
