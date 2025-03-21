@@ -9,7 +9,7 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
     data: movieDetail,
     loading,
     error,
-  } = useFetchGenre(`https://api.themoviedb.org/3/movie/${id}`);
+  } = useFetchCustom(`https://api.themoviedb.org/3/movie/${id}`);
   if (loading)
     return <div className="text-center py-4 md:py-8">Loading...</div>;
   if (error)
@@ -18,8 +18,13 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
         Error: {error}
       </div>
     );
+  // console.log(movieDetail.genres);
 
   const genres = movieDetail.genres.map((genre) => genre.name);
+  // console.log(genres instanceof Array);
+  const slicedGenres = genres.slice(0, 3);
+  console.log(slicedGenres);
+  // console.log(genres);
 
   return (
     <div className="movie-card w-full md:min-w[160px] md:w[160px] mb-5 md:mb-[30px] transition-all duration-300 active:-translate-y-1 md:active:-translate-y-2 hover:-translate-y-1 md:hover:-translate-y-2 [scroll-snap-align:start]">
@@ -35,7 +40,7 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
         {title}
       </h3>
       <div className="tags flex gap-[6px] md:gap-[10px] mt-2 md:mt-[14px] flex-wrap">
-        {genres.map((genre) => (
+        {slicedGenres.map((genre) => (
           <span
             key={genre}
             className="tag text-[#a0a3bd] bg-[rgba(160,_163,_189,_0.1)] rounded-[20px] text-[10px] md:text-[11px] text-center font-normal leading-[normal] px-[10px] md:px-[15px] py-[3px] md:py-[5px]"
