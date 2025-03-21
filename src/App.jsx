@@ -8,6 +8,11 @@ import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import AuthLayout from "./routes/AuthLayout";
 import Order from "./pages/order/Order";
+import Payment from "./components/ui/payment/payment";
+import Ticket from "./pages/order/Ticket";
+import OrderHistory from "./pages/profile/OrderHistory";
+import ListMovie from "./pages/admin/ListMovie";
+import NewMovie from "./pages/admin/NewMovie";
 function App() {
   return (
     <>
@@ -24,10 +29,29 @@ function App() {
 
             <Route path="order">
               <Route index element={<Order />} />
+              <Route path=":movieId" element={<Order />} />
+              <Route path=":movieId/:orderId" element={<Order />} />
+              <Route path="payment" element={<Payment />} />
+              <Route path="ticket" element={<Ticket />} />
+            </Route>
+
+            <Route path="profile">
+              <Route index element={<Navigate to="/profile/order" replace />} />
+              <Route path="order" element={<Order />} />
+              <Route path="order/history" element={<OrderHistory />} />
+            </Route>
+            <Route path="admin">
+              <Route
+                index
+                element={<Navigate to="/admin/dashboard" replace />}
+              />
+              <Route path="movie/list" element={<ListMovie />} />
+              <Route path="movie/add" element={<NewMovie />} />
             </Route>
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
-            <Route index element={<Navigate to="/auth/signin" replace />} />
+            e
+            <Route index element={<Navigate to="/auth/signin" rplace />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="signup" element={<SignUp />} />
           </Route>
