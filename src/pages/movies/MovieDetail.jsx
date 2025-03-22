@@ -14,10 +14,20 @@ function MovieDetail() {
   } = useFetchGenre(`
    https://api.themoviedb.org/3/movie/${movieId}`);
 
-  if (loading) return <div>Loading...</div>;
+  const {
+    data: creditsData,
+    loading: creditsLoading,
+    error: creditsError,
+  } = useFetchGenre(`
+    https://api.themoviedb.org/3/movie/${movieId}/credits`);
+
+  if (loading || creditsLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+  if (creditsError) return <div>Error: {creditsError}</div>;
   if (!moviesData) return <div>No movie data available</div>;
+  if (!creditsData) return <div>No Credits data available</div>;
   console.log(moviesData);
+  console.log(creditsData);
 
   // convert runtime minutes to hours and minutes
   const hours = Math.floor(moviesData.runtime / 60);
@@ -27,6 +37,7 @@ function MovieDetail() {
   return (
     <div className="w-full overflow-x-hidden">
       <HeroDetail
+        cast={creditsData}
         id={moviesData.id}
         key={moviesData.id}
         backdrop={`${BASE_IMAGE_URL}${moviesData.backdrop_path}`}
