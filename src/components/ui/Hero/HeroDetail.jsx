@@ -10,8 +10,21 @@ function HeroDetail({
   production_companies,
   backdrop,
   id,
+  cast,
 }) {
   console.log(genres);
+  console.log(cast);
+
+  const casting = cast.cast.slice(0, 3).map((actor) => {
+    return {
+      name: actor.name,
+    };
+  });
+
+  const director = cast.crew.find(
+    (crewMember) => crewMember.job === "Director"
+  );
+  console.log(casting);
   return (
     <>
       <header className="banner w-full h-[200px] sm:h-[300px] md:h-[400px] overflow-hidden">
@@ -61,8 +74,9 @@ function HeroDetail({
                 <div className="metadata-label text-[14px] text-[#999] mb-[3px] md:mb-[5px]">
                   Director
                 </div>
+
                 <div className="metadata-value text-[13px] md:text-[14px] text-[#333]">
-                  Jon Watts
+                  {director ? director.name : "N/A"}
                 </div>
               </div>
               <div className="metadata-item mb-[15px] md:mb-[20px]">
@@ -78,7 +92,15 @@ function HeroDetail({
                   Casts
                 </div>
                 <div className="metadata-value text-[13px] md:text-[14px] text-[#333]">
-                  Tom Holland, Michael Keaton, Robert Downey Jr
+                  {casting.map((actor, index) => (
+                    <span
+                      key={index}
+                      className="cast-name text-[#007bff] hover:underline cursor-pointer"
+                    >
+                      {actor.name}
+                      {index < casting.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
