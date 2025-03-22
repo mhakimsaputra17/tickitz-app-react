@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 function TicketResult() {
   return (
@@ -130,9 +131,11 @@ function TicketResult() {
                 </svg>
                 Download
               </button>
-              <button className="done-btn hover:bg-[#3a56d4] bg-[#4361ee] border-[none] text-[white] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]">
-                Done
-              </button>
+              <Link to="/profile/order/history">
+                <button className="done-btn hover:bg-[#3a56d4] bg-[#4361ee] border-[none] text-[white] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]">
+                  Done
+                </button>
+              </Link>
             </div>
           </section>
         </main>

@@ -160,7 +160,7 @@ function BookTicket() {
           </div>
           {/* Book now button */}
           <div className="book-now-container flex justify-center mb-10">
-            <Link to="/payment" className="btn-link">
+            <Link to="/order/payment" className="btn-link">
               <button className="book-now-button px-10 py-3 bg-blue-500 text-white border-none rounded-md font-medium cursor-pointer text-sm w-[150px] md:w-[180px] text-center">
                 Book Now
               </button>

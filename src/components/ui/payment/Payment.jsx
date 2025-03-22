@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router";
 
 function Payment() {
   return (
     <>
       <div className="container max-w-[600px] mx-[auto] my-[0] px-[15px] py-[0]">
         {/* Progress steps */}
-        <div className="progress-steps flex justify-between items-center mb-[30px] px-[20px] py-[0] mt-[20px] mx-[0] mb-[30px] px-[10px] py-[0]">
+        <div className="progress-steps flex justify-between items-center mb-[30px] px-[20px] py-[0] mt-[20px] mx-[0]   ">
           <div className="step flex flex-col items-center relative flex-[1]">
             <div className="step-icon step-completed bg-[#2e7d32] w-[50px] h-[50px] rounded-[50%] flex items-center justify-center text-[white] font-bold mb-[10px]">
               ✓
@@ -83,7 +84,7 @@ function Payment() {
             <input
               type="text"
               id="fullName"
-              className="form-control w-full p-[15px] border-[1px] border-[solid] border-[#ddd] rounded-[8px] text-[16px]"
+              className="form-control w-full p-[15px] border-[1px]  border-[#ddd] rounded-[8px] text-[16px]"
               defaultValue="Jonas El Rodriguez"
             />
           </div>
@@ -97,7 +98,7 @@ function Payment() {
             <input
               type="email"
               id="email"
-              className="form-control mb-[20px] w-full p-[15px] border-[1px] border-[solid] border-[#ddd] rounded-[8px] text-[16px]"
+              className="form-control mb-[20px] w-full p-[15px] border-[1px] ] border-[#ddd] rounded-[8px] text-[16px]"
               defaultValue="jonasrodri123@gmail.com"
             />
           </div>
@@ -112,13 +113,13 @@ function Payment() {
               <input
                 type="text"
                 id="phoneCode"
-                className="form-control phone-code w-[80px] mb-[20px] w-full p-[15px] border-[1px] border-[solid] border-[#ddd] rounded-[8px] text-[16px]"
+                className="form-control phone-code  mb-[20px] w-full p-[15px] border-[1px]  border-[#ddd] rounded-[8px] text-[16px]"
                 defaultValue={+62}
               />
               <input
                 type="text"
                 id="phoneNumber"
-                className="form-control phone-number flex-[1] min-w-[150px] mb-[20px] w-full p-[15px] border-[1px] border-[solid] border-[#ddd] rounded-[8px] text-[16px]"
+                className="form-control phone-number flex-[1] min-w-[150px] mb-[20px] w-full p-[15px] border-[1px]  border-[#ddd] rounded-[8px] text-[16px]"
                 defaultValue={8144568721}
               />
             </div>
@@ -127,10 +128,9 @@ function Payment() {
           <h2 className="section-header">Payment Method</h2>
           <div className="payment-methods grid grid-cols-[repeat(4,_1fr)] gap-[15px] mb-[30px]">
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="Google Pay"
             >
-              {/* Placeholder for Google Pay icon */}
               <img
                 className="max-w-full max-h-[30px] object-contain"
                 src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/icons/googlepay.svg"
@@ -138,7 +138,7 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="Visa"
             >
               {/* Placeholder for Visa icon */}
@@ -149,7 +149,7 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="GoPay"
             >
               {/* Placeholder for GoPay icon */}
@@ -160,7 +160,7 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="PayPal"
             >
               {/* Placeholder for PayPal icon */}
@@ -171,7 +171,7 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="Dana"
             >
               {/* Placeholder for Dana icon */}
@@ -182,10 +182,9 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="BCA"
             >
-              {/* Placeholder for BCA icon */}
               <img
                 className="max-w-full max-h-[30px] object-contain"
                 src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/icons/bca.svg"
@@ -193,10 +192,9 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="Bank BRI"
             >
-              {/* Placeholder for Bank BRI icon */}
               <img
                 className="max-w-full max-h-[30px] object-contain"
                 src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/icons/bri.svg"
@@ -204,10 +202,9 @@ function Payment() {
               />
             </div>
             <div
-              className=" border-[1px] border-[solid] border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
+              className=" border-[1px]  border-[#ddd] rounded-[8px] p-[15px] flex items-center justify-center h-[60px] cursor-pointer [transition:border-color_0.2s]"
               title="OVO"
             >
-              {/* Placeholder for OVO icon */}
               <img
                 className="max-w-full max-h-[30px] object-contain"
                 src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/icons/ovo.svg"
@@ -215,13 +212,15 @@ function Payment() {
               />
             </div>
           </div>
-          {/* Submit Button */}
-          <button
-            type="button"
-            className="btn-submit w-full p-[18px] bg-[#3f51b5] text-[white] border-[none] rounded-[8px] text-[16px] font-bold cursor-pointer [transition:background-color_0.2s]"
-          >
-            Pay your order
-          </button>
+
+          <Link to="/order/ticket">
+            <button
+              type="button"
+              className="btn-submit w-full p-[18px] bg-[#3f51b5] text-[white] border-[none] rounded-[8px] text-[16px] font-bold cursor-pointer [transition:background-color_0.2s]"
+            >
+              Pay your order
+            </button>
+          </Link>
         </div>
       </div>
     </>

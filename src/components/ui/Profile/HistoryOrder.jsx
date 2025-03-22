@@ -114,24 +114,31 @@ function HistoryOrder() {
                   </select>
                 </div>
               </article>
-              {/* Order 2 */}
-              <article className="order-card">
-                <div className="order-details">
+              <article className="order-card h-[241px] bg-[white] rounded-[16px] p-[24px] [box-shadow:0_2px_10px_rgba(0,_0,_0,_0.05)]">
+                <div className="order-details grid grid-cols-[1fr_auto] gap-[20px] mb-[16px]">
                   <div className="order-info">
-                    <p className="order-date">Monday, 14 June 2020 - 02:00pm</p>
-                    <h3 className="movie-title">Avengers: End Game</h3>
+                    <p className="order-date text-[14px] text-[#999] mb-[8px]">
+                      Tuesday, 07 July 2020 - 04:30pm
+                    </p>
+                    <h3 className="movie-title text-[20px] not-italic font-semibold leading-[38px] tracking-[0.75px]">
+                      Spider-Man: Homecoming
+                    </h3>
                   </div>
                   <img
-                    className="cinema-logo"
-                    src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/ebvid.svg"
-                    alt="ebv id icon"
+                    className="cinema-logo w-[100px] h-[40px] rounded-[4px] self-center"
+                    src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/cineone21dash.svg"
+                    alt="cineone 21"
                   />
                 </div>
-                <hr className="order-divider" />
-                <div className="order-actions">
-                  <div className="status-badges">
-                    <span className="badge used">Ticket used</span>
-                    <span className="badge paid">Paid</span>
+                <hr className="order-divider border-[none] h-px bg-[#eee] mx-[0] my-[36px]" />
+                <div className="order-actions grid grid-cols-[1fr_auto] items-center">
+                  <div className="status-badges flex gap-[12px]">
+                    <span className="badge active px-[16px] py-[8px] rounded-[8px] text-[14px] font-medium w-[196px] h-[40px] text-center bg-[rgba(0,_200,_150,_0.2)] text-[#00ba88] text-[12px] not-italic font-bold leading-[24px] tracking-[0.75px]">
+                      Ticket in active
+                    </span>
+                    <span className="badge not-paid px-[16px] py-[8px] rounded-[8px] text-[14px] font-medium w-[196px] h-[40px] text-center bg-[rgba(255,_100,_100,_0.2)] text-[#e82c2c] text-[12px] not-italic font-bold leading-[24px] tracking-[0.75px]">
+                      Not Paid
+                    </span>
                   </div>
                   <select
                     name="showdetails"
@@ -142,24 +149,31 @@ function HistoryOrder() {
                   </select>
                 </div>
               </article>
-              {/* Order 3 */}
-              <article className="order-card">
-                <div className="order-details">
+              <article className="order-card h-[241px] bg-[white] rounded-[16px] p-[24px] [box-shadow:0_2px_10px_rgba(0,_0,_0,_0.05)]">
+                <div className="order-details grid grid-cols-[1fr_auto] gap-[20px] mb-[16px]">
                   <div className="order-info">
-                    <p className="order-date">Monday, 14 June 2020 - 02:00pm</p>
-                    <h3 className="movie-title">Avengers: End Game</h3>
+                    <p className="order-date text-[14px] text-[#999] mb-[8px]">
+                      Tuesday, 07 July 2020 - 04:30pm
+                    </p>
+                    <h3 className="movie-title text-[20px] not-italic font-semibold leading-[38px] tracking-[0.75px]">
+                      Spider-Man: Homecoming
+                    </h3>
                   </div>
                   <img
-                    className="cinema-logo"
-                    src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/ebvid.svg"
-                    alt="ebv id icon"
+                    className="cinema-logo w-[100px] h-[40px] rounded-[4px] self-center"
+                    src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/cineone21dash.svg"
+                    alt="cineone 21"
                   />
                 </div>
-                <hr className="order-divider" />
-                <div className="order-actions">
-                  <div className="status-badges">
-                    <span className="badge used">Ticket used</span>
-                    <span className="badge paid">Paid</span>
+                <hr className="order-divider border-[none] h-px bg-[#eee] mx-[0] my-[36px]" />
+                <div className="order-actions grid grid-cols-[1fr_auto] items-center">
+                  <div className="status-badges flex gap-[12px]">
+                    <span className="badge active px-[16px] py-[8px] rounded-[8px] text-[14px] font-medium w-[196px] h-[40px] text-center bg-[rgba(0,_200,_150,_0.2)] text-[#00ba88] text-[12px] not-italic font-bold leading-[24px] tracking-[0.75px]">
+                      Ticket in active
+                    </span>
+                    <span className="badge not-paid px-[16px] py-[8px] rounded-[8px] text-[14px] font-medium w-[196px] h-[40px] text-center bg-[rgba(255,_100,_100,_0.2)] text-[#e82c2c] text-[12px] not-italic font-bold leading-[24px] tracking-[0.75px]">
+                      Not Paid
+                    </span>
                   </div>
                   <select
                     name="showdetails"
