@@ -27,7 +27,7 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
   // console.log(genres);
 
   return (
-    <div className="movie-card w-full md:min-w[160px] md:w[160px] mb-5 md:mb-[30px] transition-all duration-300 active:-translate-y-1 md:active:-translate-y-2 hover:-translate-y-1 md:hover:-translate-y-2 [scroll-snap-align:start]">
+    <div className="movie-card min-w-[140px] w-[140px] sm:min-w-[160px] sm:w-[160px] md:w-[calc(25%-15px)] md:min-w-[calc(25%-15px)] mb-5 md:mb-[30px] transition-all duration-300 active:-translate-y-1 md:active:-translate-y-2 hover:-translate-y-1 md:hover:-translate-y-2 flex-shrink-0 [scroll-snap-align:start]">
       <div className="poster relative overflow-hidden rounded-[8px] [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.1)]">
         <img
           src={imageUrl}
@@ -36,7 +36,7 @@ function MovieCard({ id, imageUrl, title, onButtonClick }) {
         />
         <ButtonMovie id={id} />
       </div>
-      <h3 className="mt-3 md:mt-[19px] text-[16px] md:text-[20px] font-bold leading-[1.3] md:leading-[1.4] tracking-[0.5px] md:tracking-[1px]">
+      <h3 className="mt-3 md:mt-[19px] text-[16px] md:text-[20px] font-bold leading-[1.3] md:leading-[1.4] tracking-[0.5px] md:tracking-[1px] truncate">
         {title}
       </h3>
       <div className="tags flex gap-[6px] md:gap-[10px] mt-2 md:mt-[14px] flex-wrap">
