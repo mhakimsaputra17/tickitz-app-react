@@ -8,7 +8,7 @@ import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import AuthLayout from "./routes/AuthLayout";
 import Order from "./pages/order/Order";
-import Payment from "./components/ui/payment/payment";
+import Payment from "./components/ui/payment/Payment";
 import Ticket from "./pages/order/Ticket";
 import OrderHistory from "./pages/profile/OrderHistory";
 import ListMovie from "./pages/admin/ListMovie";
