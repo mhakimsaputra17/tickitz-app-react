@@ -25,7 +25,7 @@ function MovieDetail() {
   console.log(hours, minutes);
 
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <HeroDetail
         id={moviesData.id}
         key={moviesData.id}
@@ -44,7 +44,7 @@ function MovieDetail() {
       />
 
       <BookTicket />
-    </>
+    </div>
   );
 }
 

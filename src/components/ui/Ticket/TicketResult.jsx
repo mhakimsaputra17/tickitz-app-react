@@ -3,23 +3,24 @@ import React from "react";
 function TicketResult() {
   return (
     <>
-      <main className="tickett flex justify-center items-center min-h-screen">
-        <main className="ticket-container  flex w-full  h-[730px] [box-shadow:0_10px_30px_rgba(0,_0,_0,_0.1)] rounded-[8px] overflow-hidden">
+      <main className="tickett flex justify-center items-center min-h-screen w-full p-4">
+        <main className="ticket-container flex flex-col md:flex-row w-full max-w-[1200px] h-auto md:h-[730px] [box-shadow:0_10px_30px_rgba(0,_0,_0,_0.1)] rounded-[8px] overflow-hidden">
           {/* Left side with movie poster background */}
-          <section className=" bg-[url(https://github.com/mhakimsaputra17/weekly-task3/blob/main/assets/images/poster/marvel-results.png?raw=true)] poster-section flex-[1] bg-cover bg-center text-[white] p-[40px] relative flex flex-col justify-start">
-            <div className="poster-content max-w-[400px]">
+          <section className="bg-[url(https://github.com/mhakimsaputra17/weekly-task3/blob/main/assets/images/poster/marvel-results.png?raw=true)] poster-section flex-1 bg-cover bg-center text-[white] p-6 md:p-[40px] relative flex flex-col justify-start min-h-[300px] md:min-h-0">
+            <div className="poster-content max-w-full md:max-w-[400px] pt-10 md:pt-28">
               <img
                 src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/tizkitz_signin.svg"
-                alt=""
+                alt="Tickitz Logo"
+                className="w-32 md:w-auto"
               />
-              <h2 className="thank-you text-[36px] font-semibold mb-[16px]">
+              <h2 className="thank-you text-[24px] md:text-[34px] font-semibold mb-[10px] md:mb-[16px]">
                 Thankyou For Purchasing
               </h2>
-              <p className="description text-[16px] leading-[1.6] opacity-80 mb-[40px]">
+              <p className="description text-[14px] md:text-[16px] leading-[1.6] opacity-80 mb-[20px] md:mb-[40px]">
                 Lorem ipsum dolor sit amet consectetur. Quam pretium pretium
                 tempor integer sed magna et.
               </p>
-              <div className="download-prompt flex items-center text-[16px] mt-[40px]">
+              <div className="download-prompt flex items-center text-[14px] md:text-[16px] mt-[20px] md:mt-[40px]">
                 <p>Please Download Your Ticket</p>
                 <span className="arrow ml-[12px] text-[20px]">→</span>
               </div>
@@ -27,14 +28,15 @@ function TicketResult() {
             {/* Movie poster will be added as background in CSS */}
           </section>
           {/* Right side with ticket details */}
-          <section className="ticket-details flex-[1] bg-[#f8f9fc] p-[40px] flex flex-col justify-between">
-            <div className="ticket-card bg-[white] rounded-[16px] overflow-hidden [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.05)] w-[280px] mx-auto">
+          <section className="ticket-details flex-1 bg-[#f8f9fc] p-6 md:p-[40px] flex flex-col justify-between">
+            <div className="ticket-card bg-[white] rounded-[16px] overflow-hidden [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.05)] w-full max-w-[280px] mx-auto">
               {/* QR code placeholder */}
               <div className="qr-code-container relative">
                 <div className="qr-code h-[200px] flex justify-center items-center p-[20px] bg-[white]">
                   <img
                     src="https://github.com/mhakimsaputra17/weekly-task3/blob/main/assets/images/poster/QR%20Code%201.png?raw=true"
-                    alt=""
+                    alt="QR Code"
+                    className="max-w-full"
                   />
                 </div>
                 {/* Perforated edge with cutouts */}
@@ -109,7 +111,7 @@ function TicketResult() {
               </div>
             </div>
             {/* Action buttons */}
-            <div className="action-buttons flex flex-col gap-[12px] mt-[24px] w-[330px] mx-auto">
+            <div className="action-buttons flex flex-col gap-[12px] mt-[24px] w-full max-w-[330px] mx-auto">
               <button className="download-btn hover:bg-[#f8f9ff] bg-[white] border-[1px] border-[solid] border-[#e0e0e0] text-[#4361ee] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
