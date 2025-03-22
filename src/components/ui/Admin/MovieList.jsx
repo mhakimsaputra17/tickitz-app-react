@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 function MovieList() {
   return (
@@ -25,11 +26,11 @@ function MovieList() {
                 alt="arrow icon"
               />
             </div>
-            <a href="/pages/admin/add-movie.html">
+            <Link to="/admin/movie/add">
               <button className="add-button hover:bg-[#1d4ed8] bg-[#2563eb] text-[white] border-[none] rounded-[8px] px-[20px] py-[12px] font-semibold cursor-pointer [transition:background-color_0.2s] h-[53px] w-[160px]">
                 Add Movies
               </button>
-            </a>
+            </Link>
           </div>
         </header>
         {/* Movie table */}
