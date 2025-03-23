@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../../redux/actions/authActions";
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
   return (
@@ -53,18 +62,30 @@ const Navbar = () => {
 
         {/* Auth Buttons - Desktop */}
         <div className="hidden md:flex flex-1 justify-end gap-3">
-          <Link
-            to="/auth/signin"
-            className="px-[18px] py-3 rounded border  border-blue-700 text-blue-600 text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/auth/signup"
-            className="px-[18px] py-3 rounded bg-blue-600 border border-blue-700 text-white text-sm font-normal tracking-wider hover:bg-blue-700 transition-colors"
-          >
-            Sign Up
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              to="/auth/signin"
+              className="px-[18px] py-3 rounded border  border-blue-700 text-blue-600 text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
+              onClick={handleLogout}
+            >
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/auth/signin"
+                className="px-[18px] py-3 rounded border  border-blue-700 text-blue-600 text-sm font-normal tracking-wider hover:bg-blue-50 transition-colors"
+              >
+                Sign in
+              </Link>
+              <Link
+                to="/auth/signup"
+                className="px-[18px] py-3 rounded bg-blue-600 border border-blue-700 text-white text-sm font-normal tracking-wider hover:bg-blue-700 transition-colors"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Hamburger Menu - Mobile */}
@@ -125,20 +146,33 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-col gap-4 mt-8">
-          <Link
-            to="/auth/signin"
-            className="px-[18px] py-3 rounded border border-blue-600 text-blue-600 text-sm font-normal tracking-wider text-center"
-            onClick={toggleMobileMenu}
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/auth/signup"
-            className="px-[18px] py-3 rounded bg-blue-primary border border-blue-primary text-white text-sm font-normal tracking-wider text-center bg-blue-600"
-            onClick={toggleMobileMenu}
-          >
-            Sign Up
-          </Link>
+          {isAuthenticated ? (
+            <Link
+              className="px-[18px] py-3 rounded border border-blue-600 text-blue-600 text-sm font-normal tracking-wider text-center"
+              onClick={handleLogout}
+              to="/auth/signin"
+            >
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/auth/signin"
+                className="px-[18px] py-3 rounded border border-blue-600 text-blue-600 text-sm font-normal tracking-wider text-center"
+                onClick={toggleMobileMenu}
+              >
+                Sign in
+              </Link>
+
+              <Link
+                to="/auth/signup"
+                className="px-[18px] py-3 rounded bg-blue-primary border border-blue-primary text-white text-sm font-normal tracking-wider text-center bg-blue-600"
+                onClick={toggleMobileMenu}
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>
