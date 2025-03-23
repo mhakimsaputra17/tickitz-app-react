@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { saveUser } from "../../../utils/authUtils";
+import { register } from "../../../redux/actions/authActions";
+import { clearError } from "../../../redux/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -14,6 +17,10 @@ function Register() {
   const [showSuccess, setShowSuccess] = useState(false);
   const { errors, validateEmail, validatePassword, validateForm } =
     useFormValidation();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -31,17 +38,20 @@ function Register() {
     validatePassword(formData.password);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm(formData)) {
-      // Save user to localStorage
-      saveUser(formData);
-      setShowSuccess(true);
-      setFormData({ email: "", password: "" });
+      const result = await dispatch(register(formData));
 
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 3000);
+      if (result.success) {
+        setShowSuccess(true);
+        setFormData({ email: "", password: "" });
+
+        setTimeout(() => {
+          setShowSuccess(false);
+          navigate("/auth/signin", { replace: true });
+        }, 2000);
+      }
     }
   };
 
@@ -146,9 +156,7 @@ function Register() {
                   </span>
                 </button>
               </div>
-              {errors.password && (
-                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-              )}
+              {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
             </div>
 
             {/* Forgot password */}
