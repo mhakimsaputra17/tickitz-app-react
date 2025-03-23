@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
-import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router";
+import { useState, useEffect } from "react";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { findUser } from "../../../utils/authUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../redux/actions/authActions";
+import { clearError } from "../../../redux/slices/authSlice";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -15,6 +18,20 @@ function Login() {
   const { errors, validateEmail, validatePassword, validateForm } =
     useFormValidation();
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { error, isAuthenticated } = useSelector((state) => state.auth);
+
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, from, navigate]);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
@@ -22,7 +39,7 @@ function Login() {
       [id]: value,
     }));
     // Clear login error when user starts typing again
-    setLoginError("");
+    if (error) dispatch(clearError());
   };
 
   const handleEmailBlur = () => {
@@ -37,20 +54,16 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm(formData)) {
-      const user = findUser(formData.email, formData.password);
-      if (user) {
-        // Successful login
+      const result = await dispatch(login(formData));
+      if (result.success) {
         setLoginSuccess(true);
-        setLoginError("");
-        // You could redirect or set authentication state here
         setTimeout(() => {
           setLoginSuccess(false);
-        }, 3000);
-      } else {
-        setLoginError("Invalid email or password");
+          navigate(from, { replace: true });
+        }, 2000);
       }
     }
   };
@@ -94,9 +107,9 @@ function Login() {
           </p>
 
           {/* Login error message */}
-          {loginError && (
+          {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {loginError}
+              {error}
             </div>
           )}
 
