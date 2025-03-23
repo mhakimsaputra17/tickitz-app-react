@@ -29,7 +29,7 @@ function MoviesHome() {
             Watched Today
           </h2>
         </div>
-        <div className="movie-grid px-4 md:px-[5%] py-3 md:py-[18px] flex gap-4 md:gap-[20px] justify-start flex-nowrap overflow-x-auto pb-6 md:pb-[20px] [scroll-snap-type:x_mandatory] touch-pan-x">
+        <div className="movie-grid px-4 md:px-[5%] py-3 md:py-[18px] flex gap-4 md:gap-[20px] justify-start flex-nowrap overflow-x-auto pb-6 md:pb-[20px] [scroll-snap-type:x_mandatory] touch-pan-x scrollbar-hide -mx-1 px-5">
           {slicedmovies.map(({ id, title, poster_path }) => (
             <MovieCard
               key={id}
@@ -38,6 +38,14 @@ function MoviesHome() {
               id={id}
             />
           ))}
+        </div>
+        <div className="hidden md:flex justify-center pt-4">
+          <a
+            href="/movies"
+            className="text-blue-700 hover:text-blue-900 font-medium"
+          >
+            View All Movies
+          </a>
         </div>
       </section>
     </>

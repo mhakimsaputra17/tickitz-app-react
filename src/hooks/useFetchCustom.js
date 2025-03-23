@@ -22,7 +22,8 @@ const useFetch = (url) => {
           throw new Error(`Http error! status: ${response.status}`);
         }
         const json = await response.json();
-        setData(json.results);
+        setData(json.results !== undefined ? json.results : json);
+        // console.log(json);
         setError(null);
       } catch (error) {
         setError(error.message);

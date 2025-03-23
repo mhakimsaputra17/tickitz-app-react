@@ -3,7 +3,7 @@ export const TMDB_API_KEY = import.meta.env.VITE_API_KEY;
 export const API_URL_POPULAR =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=6";
 export const API_URL_TOP_RATED =
-  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=6";
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&";
 export const API_URL_UPCOMING =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 export const API_URL_NOW_PLAYING =
