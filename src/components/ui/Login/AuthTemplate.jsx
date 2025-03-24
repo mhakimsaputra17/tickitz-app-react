@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Outlet } from "react-router";
 function AuthTemplate() {
   return (
     <>
@@ -21,6 +21,7 @@ function AuthTemplate() {
             className="max-w-[180px] h-auto"
           />
         </div>
+        <Outlet />
       </main>
     </>
   );

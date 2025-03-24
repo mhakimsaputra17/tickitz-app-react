@@ -17,6 +17,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AuthTemplate from "./components/ui/Login/AuthTemplate";
 
 function App() {
   return (
@@ -66,9 +67,8 @@ function App() {
                   <Route path="movie/add" element={<NewMovie />} />
                 </Route>
               </Route>
-              <Route path="/auth" element={<AuthLayout />}>
-                e
-                <Route index element={<Navigate to="/auth/signin" rplace />} />
+              <Route path="/auth" element={<AuthTemplate />}>
+                <Route index element={<Navigate to="/auth/signin" replace />} />
                 <Route path="signin" element={<SignIn />} />
                 <Route path="signup" element={<SignUp />} />
               </Route>
