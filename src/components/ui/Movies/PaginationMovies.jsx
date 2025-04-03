@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function PaginationMovies({ totalPages = 4, currentPage = 1, onPageChange }) {
-  // If no external state is provided, manage it internally
   const [activePage, setActivePage] = useState(currentPage);
 
   const handlePageChange = (pageNumber) => {
@@ -12,10 +11,9 @@ function PaginationMovies({ totalPages = 4, currentPage = 1, onPageChange }) {
     }
   };
 
-  // Use either external or internal page state
+
   const displayPage = onPageChange ? currentPage : activePage;
 
-  // Generate array of page numbers
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
