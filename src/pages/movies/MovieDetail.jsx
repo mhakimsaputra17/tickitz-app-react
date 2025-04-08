@@ -1,7 +1,7 @@
 import React from "react";
 import HeroDetail from "../../components/ui/Hero/HeroDetail";
 import useFetchGenre from "../../hooks/useFetchGenre";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { BASE_IMAGE_URL } from "../../configs/config";
 import BookTicket from "../../components/ui/BookTicket/BookTicket";
 
@@ -54,7 +54,7 @@ function MovieDetail() {
         production_companies={moviesData.production_companies}
       />
 
-      <BookTicket />
+      <BookTicket movieData={moviesData} />
     </div>
   );
 }

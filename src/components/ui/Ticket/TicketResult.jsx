@@ -1,7 +1,34 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 
-function TicketResult() {
+function TicketResult({ ticketData }) {
+  const navigate = useNavigate();
+
+  // Default values if no data is provided
+  const {
+    movieTitle = "Spider-Man: Homecoming",
+    date = "Tuesday, 07 July 2020",
+    time = "2:00pm",
+    cinema = "CineOne21 Cinema",
+    tickets = 3,
+    seats = ["C4", "C5", "C6"],
+    totalPrice = 30,
+    cinemaLogo = "",
+    orderId = "ORD-123456",
+    paymentMethod = "visa",
+    paymentLogo = "",
+    movieData = null,
+  } = ticketData || {};
+
+  // Format date for display
+  const formattedDate = date.includes(",") ? date.split(",")[0] : date;
+
+  // Generate a downloadable ticket (placeholder functionality)
+  const handleDownload = () => {
+    // In a real app, this would generate a PDF or image
+    alert("Ticket download functionality would be implemented here");
+  };
+
   return (
     <>
       <main className="tickett flex justify-center items-center min-h-screen w-full p-4">
@@ -18,16 +45,16 @@ function TicketResult() {
                 Thankyou For Purchasing
               </h2>
               <p className="description text-[14px] md:text-[16px] leading-[1.6] opacity-80 mb-[20px] md:mb-[40px]">
-                Lorem ipsum dolor sit amet consectetur. Quam pretium pretium
-                tempor integer sed magna et.
+                Your ticket has been booked successfully. Please check your
+                email for the ticket details.
               </p>
               <div className="download-prompt flex items-center text-[14px] md:text-[16px] mt-[20px] md:mt-[40px]">
                 <p>Please Download Your Ticket</p>
                 <span className="arrow ml-[12px] text-[20px]">→</span>
               </div>
             </div>
-            {/* Movie poster will be added as background in CSS */}
           </section>
+
           {/* Right side with ticket details */}
           <section className="ticket-details flex-1 bg-[#f8f9fc] p-6 md:p-[40px] flex flex-col justify-between">
             <div className="ticket-card bg-[white] rounded-[16px] overflow-hidden [box-shadow:0_4px_12px_rgba(0,_0,_0,_0.05)] w-full max-w-[280px] mx-auto">
@@ -40,6 +67,10 @@ function TicketResult() {
                     className="max-w-full"
                   />
                 </div>
+                {/* Order ID display */}
+                <div className="text-center text-xs text-gray-500 mt-1 mb-2">
+                  {orderId}
+                </div>
                 {/* Perforated edge with cutouts */}
                 <div className="perforation relative h-px bg-transparent">
                   <div className="cutout left absolute w-[20px] h-[20px] bg-[#f8f9fc] rounded-[50%] -top-[10px] -left-[10px]" />
@@ -47,6 +78,7 @@ function TicketResult() {
                   <div className="cutout right absolute w-[20px] h-[20px] bg-[#f8f9fc] rounded-[50%] -top-[10px] -right-[10px]" />
                 </div>
               </div>
+
               {/* Ticket information */}
               <div className="ticket-info px-[20px] py-[24px]">
                 <div className="flex justify-between mb-[20px]">
@@ -55,7 +87,9 @@ function TicketResult() {
                       Movie
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      Spider-Man: ...
+                      {movieTitle.length > 15
+                        ? movieTitle.substring(0, 12) + "..."
+                        : movieTitle}
                     </p>
                   </div>
                   <div className="flex-[1]">
@@ -63,7 +97,7 @@ function TicketResult() {
                       Category
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      PG-13
+                      {movieData?.adult ? "R" : "PG-13"}
                     </p>
                   </div>
                 </div>
@@ -73,7 +107,7 @@ function TicketResult() {
                       Date
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      07 Jul
+                      {formattedDate}
                     </p>
                   </div>
                   <div className="flex-[1]">
@@ -81,7 +115,7 @@ function TicketResult() {
                       Time
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      2:00pm
+                      {time}
                     </p>
                   </div>
                 </div>
@@ -91,7 +125,7 @@ function TicketResult() {
                       Count
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      3 pcs
+                      {tickets} pcs
                     </p>
                   </div>
                   <div className="flex-[1]">
@@ -99,21 +133,25 @@ function TicketResult() {
                       Seats
                     </p>
                     <p className="info-value text-[14px] font-medium text-[#333]">
-                      C4, C5, C6
+                      {seats.join(", ")}
                     </p>
                   </div>
                 </div>
                 <div className="total-row flex justify-between px-[0] py-[12px] border-t-[1px_solid_#f0f0f0] mt-[4px]">
                   <p className="total-label text-[14px] font-medium">Total</p>
                   <p className="total-value text-[14px] font-medium text-[#333]">
-                    $30.00
+                    ${totalPrice}.00
                   </p>
                 </div>
               </div>
             </div>
+
             {/* Action buttons */}
             <div className="action-buttons flex flex-col gap-[12px] mt-[24px] w-full max-w-[330px] mx-auto">
-              <button className="download-btn hover:bg-[#f8f9ff] bg-[white] border-[1px] border-[solid] border-[#e0e0e0] text-[#4361ee] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]">
+              <button
+                className="download-btn hover:bg-[#f8f9ff] bg-[white] border-[1px] border-[solid] border-[#e0e0e0] text-[#4361ee] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]"
+                onClick={handleDownload}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={20}
@@ -131,11 +169,13 @@ function TicketResult() {
                 </svg>
                 Download
               </button>
-              <Link to="/profile/order/history">
-                <button className="done-btn hover:bg-[#3a56d4] bg-[#4361ee] border-[none] text-[white] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]">
-                  Done
-                </button>
-              </Link>
+
+              <button
+                className="done-btn hover:bg-[#3a56d4] bg-[#4361ee] border-[none] text-[white] w-full p-[14px] rounded-[8px] text-[16px] font-medium cursor-pointer flex justify-center items-center gap-[8px] [transition:all_0.2s_ease]"
+                onClick={() => navigate("/profile/order/history")}
+              >
+                Done
+              </button>
             </div>
           </section>
         </main>
