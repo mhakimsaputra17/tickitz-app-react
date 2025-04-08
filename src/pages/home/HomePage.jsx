@@ -7,7 +7,7 @@ import MoviesHome from "../../components/ui/Movies/MoviesHome.jsx";
 import MoviesUpcoming from "../../components/ui/Movies/MoviesUpcoming.jsx";
 import Newsletter from "../../components/ui/Newsletter/Newsletter.jsx";
 
-function Home() {
+function HomePage() {
   return (
     <>
       {/* <Navbar /> */}

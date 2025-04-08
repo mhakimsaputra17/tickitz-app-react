@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./pages/home/Home";
+import HomePage from "./pages/home/HomePage";
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import SharedLayout from "./routes/SharedLayout";
 import ProfileLayout from "./routes/ProfileLayout";
@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route element={<SharedLayout />}>
                 <Route path="/home" element={<Navigate to="/" replace />} />
-                <Route index element={<Home />} />
+                <Route index element={<HomePage />} />
 
                 <Route path="movies">
                   <Route index element={<Movies />} />
