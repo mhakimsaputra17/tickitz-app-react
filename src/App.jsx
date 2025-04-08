@@ -1,7 +1,8 @@
 import React from "react";
-import Home from "./pages/Home/Home";
-import { Route, Routes, BrowserRouter, Navigate } from "react-router";
+import Home from "./pages/home/Home";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import SharedLayout from "./routes/SharedLayout";
+import ProfileLayout from "./routes/ProfileLayout";
 import Movies from "./pages/movies/Movies";
 import MovieDetail from "./pages/movies/MovieDetail";
 import SignIn from "./pages/auth/SignIn";
@@ -11,6 +12,7 @@ import Order from "./pages/order/Order";
 import Payment from "./components/ui/payment/Payment";
 import Ticket from "./pages/order/Ticket";
 import OrderHistory from "./pages/profile/OrderHistory";
+import AccountSettings from "./components/ui/Profile/AccountSettings";
 import ListMovie from "./pages/admin/ListMovie";
 import NewMovie from "./pages/admin/NewMovie";
 import { Provider } from "react-redux";
@@ -50,14 +52,6 @@ function App() {
                   <Route path="ticket" element={<Ticket />} />
                 </Route>
 
-                <Route path="profile">
-                  <Route
-                    index
-                    element={<Navigate to="/profile/order" replace />}
-                  />
-                  <Route path="order" element={<Order />} />
-                  <Route path="order/history" element={<OrderHistory />} />
-                </Route>
                 <Route path="admin">
                   <Route
                     index
@@ -67,22 +61,37 @@ function App() {
                   <Route path="movie/add" element={<NewMovie />} />
                 </Route>
               </Route>
+
+              {/* Profile routes with ProfileLayout */}
+              <Route
+                path="profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route
+                  index
+                  element={<Navigate to="/profile/account" replace />}
+                />
+                <Route path="account" element={<AccountSettings />} />
+                <Route path="order/history" element={<OrderHistory />} />
+              </Route>
+
               <Route path="/auth" element={<AuthTemplate />}>
                 <Route index element={<Navigate to="/auth/signin" replace />} />
                 <Route path="signin" element={<SignIn />} />
                 <Route path="signup" element={<SignUp />} />
               </Route>
-              /*{" "}
               <Route
                 path="*"
                 element={
                   <h1 className="text-blue-500 text-5xl text-center font-bold flex justify-center items-center h-screen">
-                    <br />
                     404 Page Not Found
                   </h1>
                 }
-              />{" "}
-              */
+              />
             </Routes>
           </BrowserRouter>
         </PersistGate>

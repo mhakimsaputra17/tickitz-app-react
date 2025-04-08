@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MoviesHero from "../../components/ui/Hero/MoviesHero";
 import Carousel from "../../components/ui/Hero/Carousel";
 import Filter from "../../components/ui/FilterAndSearch/Filter";
@@ -16,12 +16,25 @@ import Newsletter from "../../components/ui/Newsletter/Newsletter";
 import PaginationMovies from "../../components/ui/Movies/PaginationMovies";
 
 function Movies() {
-  const page = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Update the fetch URL to include the dynamic currentPage
   const {
     data: moviesData,
     loading,
     error,
-  } = useFetch(`${API_URL_TOP_RATED}page=${page}`);
+  } = useFetch(`${API_URL_TOP_RATED}page=${currentPage}`);
+
+  // Function to handle page changes
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // The fetch will happen automatically because of the dependency in useFetch
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when page changes
+  };
+
+  // Calculate total pages (assuming API returns 20 items per page and there are many movies)
+  const totalPages = 20; // You may want to get this from API if available
+
   if (loading)
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -53,7 +66,12 @@ function Movies() {
           ))}
         </div>
       </section>
-      <PaginationMovies />
+      <PaginationMovies
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        isLoading={loading}
+      />
       <Newsletter />
     </>
   );

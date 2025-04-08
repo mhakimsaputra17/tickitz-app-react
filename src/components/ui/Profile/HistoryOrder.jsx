@@ -71,7 +71,7 @@ function HistoryOrder() {
             {/* Tabs Navigation */}
             <nav className="tabs bg-white rounded-[16px] grid grid-cols-2 md:grid-cols-[1fr_1fr_1fr_1fr] overflow-hidden shadow-md">
               <a
-                href="#"
+                href="/profile/account"
                 className="tab text-[13px] sm:text-[15px] not-italic font-normal leading-[24px] sm:leading-[34px] tracking-[0.75px] p-[12px] sm:p-[20px] text-center no-underline text-[#777] font-medium transition-colors relative"
               >
                 Account Settings

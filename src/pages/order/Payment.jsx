@@ -1,5 +1,4 @@
-import React from "react";
-import Payment from "../../components/ui/payment/payment";
+import { Payment } from "../../components/ui/payment/Payment";
 function Payment() {
   return (
     <>

@@ -1,7 +1,12 @@
 import React from "react";
+import AccountSettings from "../../components/ui/Profile/AccountSettings";
 
 function Account() {
-  return <div>Account</div>;
+  return (
+    <>
+      <AccountSettings />
+    </>
+  );
 }
 
 export default Account;
