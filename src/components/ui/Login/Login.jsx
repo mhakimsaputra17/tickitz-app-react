@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { findUser } from "../../../utils/authUtils";
@@ -199,7 +199,7 @@ function Login() {
           <div className="text-center mt-4">
             <p className="text-[#8a8a9a] text-xs sm:text-sm">
               Don't have an account?{" "}
-              <Link to="/register" className="text-[#4169e1] no-underline">
+              <Link to="/auth/signup" className="text-[#4169e1] no-underline">
                 Register
               </Link>
             </p>

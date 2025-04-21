@@ -45,11 +45,46 @@ function App() {
                 </Route>
 
                 <Route path="order">
-                  <Route index element={<Order />} />
-                  <Route path=":movieId" element={<Order />} />
-                  <Route path=":movieId/:orderId" element={<Order />} />
-                  <Route path="payment" element={<Payment />} />
-                  <Route path="ticket" element={<Ticket />} />
+                  <Route
+                    index
+                    element={
+                      <ProtectedRoute>
+                        <Order />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path=":movieId"
+                    element={
+                      <ProtectedRoute>
+                        <Order />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path=":movieId/:orderId"
+                    element={
+                      <ProtectedRoute>
+                        <Order />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="payment"
+                    element={
+                      <ProtectedRoute>
+                        <Payment />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="ticket"
+                    element={
+                      <ProtectedRoute>
+                        <Ticket />
+                      </ProtectedRoute>
+                    }
+                  />
                 </Route>
 
                 <Route path="admin">
@@ -57,8 +92,22 @@ function App() {
                     index
                     element={<Navigate to="/admin/dashboard" replace />}
                   />
-                  <Route path="movie/list" element={<ListMovie />} />
-                  <Route path="movie/add" element={<NewMovie />} />
+                  <Route
+                    path="movie/list"
+                    element={
+                      <ProtectedRoute>
+                        <ListMovie />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="movie/add"
+                    element={
+                      <ProtectedRoute>
+                        <NewMovie />
+                      </ProtectedRoute>
+                    }
+                  />
                 </Route>
               </Route>
 
