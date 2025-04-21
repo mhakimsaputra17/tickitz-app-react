@@ -1,7 +1,10 @@
 
-* 
-!dist/
+
 node_modules
 build
 npm-debug.log
 yarn-error.log
+.git
+.github
+.gitignore
+README.md
