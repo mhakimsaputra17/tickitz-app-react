@@ -51,7 +51,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="/order"
+                to="/movies"
                 className="text-[#0f172a] text-sm font-normal relative hover:text-blue-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-blue-primary after:bottom-[-5px] after:left-0 after:transition-all after:duration-300 hover:after:w-full"
               >
                 Buy Ticket
