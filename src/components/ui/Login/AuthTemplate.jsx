@@ -19,9 +19,9 @@ function AuthTemplate() {
             className="max-w-[180px] h-auto"
           />
         </div>
-        <div className="relative z-10">
-          <Outlet />
-        </div>
+        {/* <div className="relative z-10"> */}
+        <Outlet />
+        {/* </div> */}
       </main>
     </>
   );
