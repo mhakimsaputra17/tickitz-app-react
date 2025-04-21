@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router";
-import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { saveUser } from "../../../utils/authUtils";
 import { register } from "../../../redux/actions/authActions";
@@ -20,6 +20,7 @@ function Register() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
@@ -28,6 +29,8 @@ function Register() {
       ...prev,
       [id]: value,
     }));
+    // Clear error when user starts typing again
+    if (error) dispatch(clearError());
   };
 
   const handleEmailBlur = () => {
@@ -61,25 +64,6 @@ function Register() {
 
   return (
     <>
-      {/* <main
-        className=" min-h-screen flex flex-col items-center justify-center px-5 py-8 relative bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage:
-            "url('https://github.com/mhakimsaputra17/weekly-task3/blob/main/assets/images/backgrounds/marvel.png?raw=true')",
-        }}
-      > */}
-      {/* Dark overlay */}
-      {/* <div className="absolute inset-0 bg-black opacity-60 -z-10 "></div> */}
-
-      {/* Logo */}
-      {/* <div className="mb-8 text-center">
-          <img
-            src="https://raw.githubusercontent.com/mhakimsaputra17/weekly-task3/7c2e4c1f0b29e0b3de07e412c7c20490a272f31d/assets/images/logo/tizkitz_signin.svg"
-            alt="tickitz sign in"
-            className="max-w-[180px] h-auto"
-          />
-        </div> */}
-
       {/* Success message */}
       {showSuccess && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded absolute top-5 right-5">
@@ -90,12 +74,19 @@ function Register() {
       {/* Register card */}
       <div className="bg-white rounded-2xl w-full max-w-[480px] p-6 sm:p-10 lg:p-[60px] shadow-lg">
         <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 text-left">
-          REGISTER<span className="ml-1 text-lg sm:text-xl">👋</span>
+          Sign Up<span className="ml-1 text-lg sm:text-xl">👋</span>
         </h2>
 
         <p className="text-[#8a8a9a] text-xs sm:text-sm lg:text-base mb-5 lg:mb-7 text-left">
           Create your account to enjoy all features
         </p>
+
+        {/* Error message */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
 
         <form className="login-form" noValidate onSubmit={handleSubmit}>
           {/* Email field */}
@@ -156,7 +147,9 @@ function Register() {
                 </span>
               </button>
             </div>
-            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+            )}
           </div>
 
           {/* Forgot password */}
@@ -171,7 +164,6 @@ function Register() {
 
           {/* Register button */}
           <button
-            value="Submit"
             type="submit"
             className="w-full py-3 bg-[#4169e1] text-white border-none rounded-md text-sm sm:text-base lg:text-lg font-medium cursor-pointer hover:bg-[#3657c0] transition-colors"
           >
@@ -182,7 +174,7 @@ function Register() {
           <div className="text-center mt-4">
             <p className="text-[#8a8a9a] text-xs sm:text-sm">
               Already have an account?{" "}
-              <Link to="/login" className="text-[#4169e1] no-underline">
+              <Link to="/auth/signin" className="text-[#4169e1] no-underline">
                 Login
               </Link>
             </p>
@@ -224,7 +216,6 @@ function Register() {
           </div>
         </form>
       </div>
-      {/* </main> */}
     </>
   );
 }
